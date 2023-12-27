@@ -19,7 +19,7 @@ services:
     networks:
       - ${GLOBAL_NETWORK:-kafka}
   kafka-broker-1:
-    image: conflentinc/cp-kafka:${KAFKA_VERSION}
+    image: confluentinc/cp-kafka:${KAFKA_VERSION}
     hostname: kafka-broker-1
     ports:
       - "19092:19092"
@@ -36,7 +36,7 @@ services:
     networks:
       - ${GLOBAL_NETWORK:-kafka}
   kafka-broker-2:
-    image: conflentinc/cp-kafka:${KAFKA_VERSION}
+    image: confluentinc/cp-kafka:${KAFKA_VERSION}
     hostname: kafka-broker-2
     ports:
       - "29092:29092"
@@ -53,7 +53,7 @@ services:
     networks:
       - ${GLOBAL_NETWORK:-kafka}
   kafka-broker-3:
-    image: conflentinc/cp-kafka:${KAFKA_VERSION}
+    image: confluentinc/cp-kafka:${KAFKA_VERSION}
     hostname: kafka-broker-3
     ports:
       - "39092:39092"
