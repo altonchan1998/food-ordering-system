@@ -15,7 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @IdClass(OrderItemEntityId.class)
-@Table(name = "tbl_order_items")
+@Table(name = "order_items")
 @Entity
 public class OrderItemEntity {
     @Id

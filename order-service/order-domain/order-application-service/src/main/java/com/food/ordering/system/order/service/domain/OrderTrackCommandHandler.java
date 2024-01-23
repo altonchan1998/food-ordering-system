@@ -9,6 +9,7 @@ import com.food.ordering.system.order.service.domain.mapper.OrderDataMapper;
 import com.food.ordering.system.order.service.domain.ports.output.repository.OrderRepository;
 import com.food.ordering.system.order.service.domain.valueobject.TrackingId;
 import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +17,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 
-@Component
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Slf4j
+@RequiredArgsConstructor
+@Component
 public class OrderTrackCommandHandler {
-
-    @Autowired
-    OrderDataMapper orderDataMapper;
-    @Autowired
-    OrderRepository orderRepository;
+    final OrderDataMapper orderDataMapper;
+    final OrderRepository orderRepository;
 
     @Transactional(readOnly = true)
     public TrackOrderResponse trackOrder(TrackOrderQuery trackOrderQuery) {

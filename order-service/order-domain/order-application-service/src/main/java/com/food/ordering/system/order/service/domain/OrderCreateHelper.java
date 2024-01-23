@@ -9,6 +9,7 @@ import com.food.ordering.system.order.service.domain.mapper.OrderDataMapper;
 import com.food.ordering.system.order.service.domain.ports.output.repository.CustomerRepository;
 import com.food.ordering.system.order.service.domain.ports.output.repository.OrderRepository;
 import com.food.ordering.system.order.service.domain.ports.output.repository.RestaurantRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,19 +18,15 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Objects;
 import java.util.UUID;
 
-@Component
 @Slf4j
+@RequiredArgsConstructor
+@Component
 public class OrderCreateHelper {
-    @Autowired
-    private OrderDomainService orderDomainService;
-    @Autowired
-    private OrderRepository orderRepository;
-    @Autowired
-    private CustomerRepository customerRepository;
-    @Autowired
-    private RestaurantRepository restaurantRepository;
-    @Autowired
-    private OrderDataMapper orderDataMapper;
+    private final OrderDomainService orderDomainService;
+    private final OrderRepository orderRepository;
+    private final CustomerRepository customerRepository;
+    private final RestaurantRepository restaurantRepository;
+    private final OrderDataMapper orderDataMapper;
 
     @Transactional
     public OrderCreatedEvent persistOrder(CreateOrderCommand createOrderCommand) {

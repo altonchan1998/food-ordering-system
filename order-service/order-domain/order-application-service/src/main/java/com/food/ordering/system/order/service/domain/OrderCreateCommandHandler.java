@@ -5,6 +5,7 @@ import com.food.ordering.system.order.service.domain.dto.create.CreateOrderRespo
 import com.food.ordering.system.order.service.domain.event.OrderCreatedEvent;
 import com.food.ordering.system.order.service.domain.mapper.OrderDataMapper;
 import com.food.ordering.system.order.service.domain.ports.output.message.publisher.payment.OrderCreatedPaymentRequestMessagePublisher;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -12,17 +13,14 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 
-@Component
 @Slf4j
+@RequiredArgsConstructor
+@Component
 public class OrderCreateCommandHandler {
-    @Autowired
-    private OrderCreateHelper orderCreateHelper;
-    @Autowired
-    private OrderDataMapper orderDataMapper;
-    @Autowired
-    private OrderCreatedPaymentRequestMessagePublisher orderCreatedPaymentRequestMessagePublisher;
-    @Autowired
-    private ApplicationDomainEventPublisher applicationDomainEventPublisher;
+    private final OrderCreateHelper orderCreateHelper;
+    private final OrderDataMapper orderDataMapper;
+    private final OrderCreatedPaymentRequestMessagePublisher orderCreatedPaymentRequestMessagePublisher;
+    private final ApplicationDomainEventPublisher applicationDomainEventPublisher;
 
     @Transactional
     public CreateOrderResponse createOrder(CreateOrderCommand createOrderCommand) {

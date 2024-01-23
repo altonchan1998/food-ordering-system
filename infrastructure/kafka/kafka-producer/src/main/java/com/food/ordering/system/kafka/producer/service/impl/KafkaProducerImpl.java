@@ -2,9 +2,9 @@ package com.food.ordering.system.kafka.producer.service.impl;
 
 import com.food.ordering.system.kafka.producer.exception.KafkaProducerException;
 import com.food.ordering.system.kafka.producer.service.KafkaProducer;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.avro.specific.SpecificRecordBase;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.KafkaException;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
@@ -16,11 +16,11 @@ import javax.annotation.PreDestroy;
 import java.io.Serializable;
 
 @Slf4j
+@RequiredArgsConstructor
 @Component
 public class KafkaProducerImpl<K extends Serializable, V extends SpecificRecordBase> implements KafkaProducer<K, V> {
 
-    @Autowired
-    private KafkaTemplate<K, V> kafkaTemplate;
+    private final KafkaTemplate<K, V> kafkaTemplate;
 
     @Override
     public void send(String topicName, K key, V message, ListenableFutureCallback<SendResult<K, V>> callback) {

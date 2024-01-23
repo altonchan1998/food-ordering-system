@@ -20,10 +20,15 @@ import java.util.Map;
 @Configuration
 public class KafkaConsumerConfig<K extends Serializable, V extends SpecificRecordBase> {
 
-    @Autowired
-    private KafkaConfigData kafkaConfigData;
-    @Autowired
-    private KafkaConsumerConfigData kafkaConsumerConfigData;
+
+    private final KafkaConfigData kafkaConfigData;
+
+    private final KafkaConsumerConfigData kafkaConsumerConfigData;
+
+    public KafkaConsumerConfig(KafkaConfigData kafkaConfigData, KafkaConsumerConfigData kafkaConsumerConfigData) {
+        this.kafkaConfigData = kafkaConfigData;
+        this.kafkaConsumerConfigData = kafkaConsumerConfigData;
+    }
 
     @Bean
     public Map<String, Object> consumerConfig() {
