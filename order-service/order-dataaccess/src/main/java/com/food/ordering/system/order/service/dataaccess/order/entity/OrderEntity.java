@@ -1,10 +1,22 @@
 package com.food.ordering.system.order.service.dataaccess.order.entity;
 
 import com.food.ordering.system.domain.valueobject.OrderStatus;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
@@ -36,7 +48,7 @@ public class OrderEntity {
     String failureMessage;
 
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
-    OrderAddressEntity address;
+    private OrderAddressEntity address;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     List<OrderItemEntity> items;

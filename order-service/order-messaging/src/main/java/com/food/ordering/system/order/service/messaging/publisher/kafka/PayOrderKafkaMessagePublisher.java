@@ -5,7 +5,7 @@ import com.food.ordering.system.kafka.producer.service.KafkaProducer;
 import com.food.ordering.system.order.service.domain.config.OrderServiceConfigData;
 import com.food.ordering.system.order.service.domain.event.OrderPaidEvent;
 import com.food.ordering.system.order.service.domain.ports.output.message.publisher.restaurantapproval.OrderPaidRestaurantRequestMessagePublisher;
-import com.food.ordering.system.order.service.messaging.mapper.OrderMessagingDataAccessMapper;
+import com.food.ordering.system.order.service.messaging.mapper.OrderMessagingDataMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 @Component
 public class PayOrderKafkaMessagePublisher implements OrderPaidRestaurantRequestMessagePublisher {
-    private final OrderMessagingDataAccessMapper orderMessagingDataAccessMapper;
+    private final OrderMessagingDataMapper orderMessagingDataMapper;
     private final OrderServiceConfigData orderServiceConfigData;
     private final KafkaProducer<String, RestaurantApprovalRequestAvroModel> kafkaProducer;
     private final OrderKafkaMessageHelper orderKafkaMessageHelper;
@@ -24,7 +24,7 @@ public class PayOrderKafkaMessagePublisher implements OrderPaidRestaurantRequest
         String orderId = orderPaidEvent.getOrder().getId().getValue().toString();
 
         try {
-            RestaurantApprovalRequestAvroModel restaurantApprovalRequestAvroModel = orderMessagingDataAccessMapper.orderPaidEventToRestaurantApprovalRequestAvroModel(orderPaidEvent);
+            RestaurantApprovalRequestAvroModel restaurantApprovalRequestAvroModel = orderMessagingDataMapper.orderPaidEventToRestaurantApprovalRequestAvroModel(orderPaidEvent);
 
             kafkaProducer.send(
                     orderServiceConfigData.getPaymentRequestTopicName(),
