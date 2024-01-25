@@ -5,20 +5,19 @@ import com.food.ordering.system.order.service.domain.dto.create.CreateOrderRespo
 import com.food.ordering.system.order.service.domain.dto.track.TrackOrderQuery;
 import com.food.ordering.system.order.service.domain.dto.track.TrackOrderResponse;
 import com.food.ordering.system.order.service.domain.ports.input.service.OrderApplicationService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
-@Service
 @Slf4j
+@RequiredArgsConstructor
 @Validated
+@Service
 public class OrderApplicationServiceImpl implements OrderApplicationService {
-
-    @Autowired
-    private OrderCreateCommandHandler orderCreateCommandHandler;
-    @Autowired
-    private OrderTrackCommandHandler orderTrackCommandHandler;
+    private final OrderCreateCommandHandler orderCreateCommandHandler;
+    private final OrderTrackCommandHandler orderTrackCommandHandler;
 
     @Override
     public CreateOrderResponse createOrder(CreateOrderCommand createOrderCommand) {

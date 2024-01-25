@@ -2,9 +2,10 @@ package com.food.ordering.system.kafka.producer;
 
 import com.food.ordering.system.kafka.config.data.KafkaConfigData;
 import com.food.ordering.system.kafka.config.data.KafkaProducerConfigData;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.avro.specific.SpecificRecordBase;
 import org.apache.kafka.clients.producer.ProducerConfig;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
@@ -15,12 +16,12 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+@Slf4j
+@RequiredArgsConstructor
 @Configuration
 public class KafkaProducerConfig<K extends Serializable, V extends SpecificRecordBase> {
-    @Autowired
-    private KafkaConfigData kafkaConfigData;
-    @Autowired
-    private KafkaProducerConfigData kafkaProducerConfigData;
+    private final KafkaConfigData kafkaConfigData;
+    private final KafkaProducerConfigData kafkaProducerConfigData;
 
     @Bean
     public Map<String, Object> producerConfig() {
