@@ -49,6 +49,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <fork>true</fork>
                     <image>
                         <name>${project.groupId}/order.service:${project.version}</name>
                     </image>

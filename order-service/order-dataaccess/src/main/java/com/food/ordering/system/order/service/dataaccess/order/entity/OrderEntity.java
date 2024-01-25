@@ -45,7 +45,7 @@ public class OrderEntity {
     @Enumerated(EnumType.STRING)
     OrderStatus orderStatus;
 
-    String failureMessage;
+    String failureMessages;
 
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
     private OrderAddressEntity address;
