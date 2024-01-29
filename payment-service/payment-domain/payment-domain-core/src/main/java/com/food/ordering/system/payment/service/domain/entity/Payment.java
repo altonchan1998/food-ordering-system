@@ -6,8 +6,7 @@ import com.food.ordering.system.domain.valueobject.Money;
 import com.food.ordering.system.domain.valueobject.OrderId;
 import com.food.ordering.system.domain.valueobject.PaymentStatus;
 import com.food.ordering.system.payment.service.domain.valueobject.PaymentId;
-import lombok.AccessLevel;
-import lombok.experimental.FieldDefaults;
+
 
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
