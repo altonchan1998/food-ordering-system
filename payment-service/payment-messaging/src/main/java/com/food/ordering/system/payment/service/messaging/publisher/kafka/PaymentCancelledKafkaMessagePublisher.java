@@ -5,9 +5,7 @@ import com.food.ordering.system.kafka.producer.KafkaMessageHelper;
 import com.food.ordering.system.kafka.producer.service.KafkaProducer;
 import com.food.ordering.system.payment.service.domain.config.PaymentServiceConfigData;
 import com.food.ordering.system.payment.service.domain.event.PaymentCancelledEvent;
-import com.food.ordering.system.payment.service.domain.event.PaymentCompletedEvent;
 import com.food.ordering.system.payment.service.domain.port.output.message.publisher.PaymentCancelledMessagePublisher;
-import com.food.ordering.system.payment.service.domain.port.output.message.publisher.PaymentCompletedMessagePublisher;
 import com.food.ordering.system.payment.service.messaging.mapper.PaymentMessagingDataMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +31,7 @@ public class PaymentCancelledKafkaMessagePublisher implements PaymentCancelledMe
                     paymentServiceConfigData.getPaymentResponseTopicName(),
                     orderId,
                     paymentResponseAvroModel,
-                    kafkaMessageHelper.getKafkaCallBack(
+                    kafkaMessageHelper.getKafkaCallback(
                             paymentServiceConfigData.getPaymentResponseTopicName(),
                             paymentResponseAvroModel,
                             orderId,

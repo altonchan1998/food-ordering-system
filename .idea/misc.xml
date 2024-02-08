@@ -13,6 +13,7 @@
       <set>
         <option value="$PROJECT_DIR$/payment-service/payment-application/pom.xml" />
         <option value="$PROJECT_DIR$/payment-service/payment-domain/payment-domain-service/pom.xml" />
+        <option value="$PROJECT_DIR$/restaurant-service/restaurant-application/pom.xml" />
       </set>
     </option>
     <option name="workspaceImportForciblyTurnedOn" value="true" />
