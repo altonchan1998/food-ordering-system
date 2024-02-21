@@ -4,7 +4,7 @@ import com.food.ordering.system.domain.valueobject.CustomerId;
 import com.food.ordering.system.payment.service.dataaccess.creditentry.mapper.CreditEntryDataAccessMapper;
 import com.food.ordering.system.payment.service.dataaccess.creditentry.repository.CreditEntryJpaRepository;
 import com.food.ordering.system.payment.service.domain.entity.CreditEntry;
-import com.food.ordering.system.payment.service.domain.ports.output.repository.CreditEntryRepository;
+import com.food.ordering.system.payment.service.domain.port.output.repository.CreditEntryRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -24,8 +24,7 @@ public class CreditEntryRepositoryImpl implements CreditEntryRepository {
     @Override
     public CreditEntry save(CreditEntry creditEntry) {
         return creditEntryDataAccessMapper
-                .creditEntryEntityToCreditEntry(creditEntryJpaRepository
-                        .save(creditEntryDataAccessMapper.creditEntryToCreditEntryEntity(creditEntry)));
+                .creditEntryEntityToCreditEntry(creditEntryJpaRepository.save(creditEntryDataAccessMapper.creditEntryToCreditEntryEntity(creditEntry)));
     }
 
     @Override

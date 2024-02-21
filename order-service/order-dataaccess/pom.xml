@@ -17,6 +17,10 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.food.ordering.system</groupId>
+            <artifactId>common-dataaccess</artifactId>
+        </dependency>
+        <dependency>
             <!-- to implement the interfaces from domain layer -->
             <groupId>com.food.ordering.system</groupId>
             <artifactId>order-application-service</artifactId>
