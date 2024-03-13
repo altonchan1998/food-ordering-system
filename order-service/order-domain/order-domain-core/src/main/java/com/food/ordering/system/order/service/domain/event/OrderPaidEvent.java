@@ -6,20 +6,11 @@ import com.food.ordering.system.order.service.domain.entity.Order;
 import java.time.ZonedDateTime;
 
 public class OrderPaidEvent extends OrderEvent {
-    private final DomainEventPublisher<OrderPaidEvent> eventPublisher;
 
     public OrderPaidEvent(
             Order order,
-            ZonedDateTime createdAt,
-            DomainEventPublisher<OrderPaidEvent> eventPublisher
+            ZonedDateTime createdAt
     ) {
         super(order, createdAt);
-        this.eventPublisher = eventPublisher;
-    }
-
-
-    @Override
-    public void fire() {
-        eventPublisher.publish(this);
     }
 }
